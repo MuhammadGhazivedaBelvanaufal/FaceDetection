@@ -4,11 +4,11 @@ import cv2
 Ref = cv2.CascadeClassifier("Ref.xml")
 
 # Load model gender
-gender_net = cv2.dnn.readNetFromCaffe("deploy_gender.prototxt", "gender_net.caffemodel")
+gender_net = cv2.dnn.readNetFromCaffe("gender_deploy.prototxt", "gender_net.caffemodel")
 gender_list = ['Male', 'Female']
 
 # Load model usia
-age_net = cv2.dnn.readNetFromCaffe("deploy_age.prototxt", "age_net.caffemodel")
+age_net = cv2.dnn.readNetFromCaffe("age_deploy.prototxt", "age_net.caffemodel")
 age_list = ['(0-2)', '(4-6)', '(8-12)', '(15-20)',
             '(25-32)', '(38-43)', '(48-53)', '(60-100)']
 
@@ -20,7 +20,7 @@ def face_detection(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = Ref.detectMultiScale(gray, scaleFactor=1.1, minSize=(100, 100), minNeighbors=5)
     return faces
-
+# hwahciwha
 # Deteksi wajah + jenis kelamin + usia
 def face_box(frame):
     faces = face_detection(frame)
